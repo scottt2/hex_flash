@@ -43,11 +43,10 @@ int main(void) {
     time_t start = time(0);
 
     if (correct_answer(prompt_user(value), value)) {
-      double time_spent = ((double) (time(0) - start));
-      update_stats(time_spent, &rights, &right_avg);
+      update_stats(((double) (time(0) - start)), &rights, &right_avg);
 
       printf(
-        "\n\n*** Correct! ***\nYour score is %d\nYou average time is %g seconds\n\n",
+        "\n\n*** Correct! ***\nYour score is %d\nYour average time is %g seconds\n\n",
         rights,
         right_avg
       );
