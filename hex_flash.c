@@ -2,6 +2,13 @@
 #include <stdlib.h>
 #include <time.h>
 
+#ifdef _WIN32
+#include <conio.h>
+#else
+#include <stdio.h>
+#define clrscr() printf("\e[1;1H\e[2J")
+#endif
+
 _Bool correct_answer(int answer, int value) {
   return answer == value;
 }
@@ -30,7 +37,17 @@ void update_stats(double const time, int *rights, double *right_avg) {
 }
 
 int main(void) {
+  clrscr();
   srand(time(0));
+
+  printf("\n\n*** Welcome to Hex Flash ***\n\n");
+  printf("The world's worst game! (TM)\n\n");
+  printf("--- Handy Dandy hex table ---\n");
+  for (int i = 0; i < 16; i++) {
+    printf("%01x:\t%d\t%d\n", i, i*16, i);
+  }
+  printf("_____________________________\n\n");
+  printf("Instructions: Type the decimal version of each hex octal.\n");
 
   int value;
   new_value(&value);
